@@ -37,13 +37,12 @@
             <input class="checkbox-inline" type="checkbox" ng-model="item.done">
           </td>
           <td>
-            <span>{{item.text}}</span>
+            <span>{{::item.text}}</span>
           </td>
           <td>
-            <span>{{item.value}}</span>
+            <span>{{::item.value}}</span>
           </td>
           <td>
-            <!--<form ng-submit="delete()"><input type="submit" class="btn btn-sm btn-danger" value="Удалить"></form>-->
             <input type="button" class="btn btn-sm btn-danger" value="Удалить" ng-click="delete()">
           </td>
         </tr>
