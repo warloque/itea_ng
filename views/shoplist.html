@@ -1,0 +1,57 @@
+<div class="row">
+
+  <div class="col-md-12">
+
+    <h2 class="lyt-title">Список покупок</h2>
+
+    <div class="panel" ng-controller="ListCtrl">
+
+      <div class="panel">
+        <span class="label label-info">Осталось {{remain()}} из {{items.length}}</span>
+      </div>
+
+      <form class="well" ng-submit="addItem()">
+
+        <div class="row">
+
+          <div class="col-xs-12 col-md-4">
+            <input id="addfld1" class="form-control cmn-gap" type="text" ng-model="itemText" size="30" placeholder="Название" ng-required>
+          </div>
+
+          <div class="col-xs-12 col-md-4">
+            <input id="addfld2" class="form-control cmn-gap" type="text" ng-model="itemValue" size="30" placeholder="Кол-во" ng-required>
+          </div>
+
+          <div class="col-xs-12 col-md-4">
+            <input class="btn btn-primary" type="submit" value="Добавить" ng-disabled="(!itemText || !itemValue)">
+          </div>
+
+        </div>
+
+      </form>
+
+      <table class="table table-hover">
+        <tbody>
+        <tr ng-repeat="item in items" class="shoplist__item done-{{item.done}}" ng-click="item.done=!item.done">
+          <td>
+            <input class="checkbox-inline" type="checkbox" ng-model="item.done">
+          </td>
+          <td>
+            <span>{{item.text}}</span>
+          </td>
+          <td>
+            <span>{{item.value}}</span>
+          </td>
+          <td>
+            <!--<form ng-submit="delete()"><input type="submit" class="btn btn-sm btn-danger" value="Удалить"></form>-->
+            <input type="button" class="btn btn-sm btn-danger" value="Удалить" ng-click="delete()">
+          </td>
+        </tr>
+        </tbody>
+      </table>
+
+    </div>
+
+  </div>
+
+</div>

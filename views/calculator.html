@@ -1,0 +1,30 @@
+<div class="row" ng-controller="CalcCtrl">
+
+  <div class="col-md-12">
+
+    <h2 class="lyt-title">Калькулятор</h2>
+
+    <div class="panel">
+
+      <form class="form" action="" ng-submit="">
+
+        <input type="number" ng-model="iFrom" placeholder="1" />
+
+        <div class="btn-group">
+          <div class="btn btn-default" ng-click="sum=(iFrom+iTo)">+</div>
+          <div class="btn btn-default" ng-click="sum=(iFrom-iTo)">-</div>
+          <div class="btn btn-info" ng-click="sum=(iFrom*iTo)">*</div>
+          <div class="btn btn-info" ng-click="sum=(iFrom/iTo)">/</div>
+        </div>
+
+        <input type="number" ng-model="iTo" placeholder="1" />
+
+      </form>
+
+    </div>
+
+    <div class="well" ng-model="sum"><em>Результат:</em> {{sum}}</div>
+
+  </div>
+
+</div>

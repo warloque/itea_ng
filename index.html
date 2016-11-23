@@ -1,0 +1,48 @@
+<!doctype html>
+<html ng-app="App" lang="ru">
+
+<head>
+  <base href="/" />
+  <script src="./components/angular.min.js"></script>
+  <script src="./components/angular-sanitize.js"></script>
+  <script src="./components/angular-route.js"></script>
+
+  <script>
+    var App = angular.module("App", ['ngRoute', 'ngSanitize']);
+  </script>
+
+  <script src="./controllers/shoplist.js"></script>
+  <script src="./controllers/calculator.js"></script>
+
+  <script src="./components/routing.js"></script>
+
+  <!--<script src="./assets/app.js"></script>-->
+
+  <link href="./assets/app.css" rel="stylesheet" />
+  <link href="./assets/lists/shoplist.css" rel="stylesheet" />
+  <link href="./assets/bootstrap/css/bootstrap.css" rel="stylesheet"/>
+  <link href="./assets/bootstrap/css/bootstrap-theme.css" rel="stylesheet"/>
+</head>
+
+<body ng-class="{'home': isCurrentPath('/')}">
+
+<div class="container-fluid">
+
+  <div class="row">
+
+  <div class="lyt-menu col-xs-12 col-md-2">
+    <ul class="nav nav-pills nav-stacked">
+      <li><a class="nav__link" href="/">Home</a></li>
+      <li><a class="nav__link" href="/shoplist">Shopping list</a></li>
+      <li><a class="nav__link" href="/calc">Calculator</a></li>
+    </ul>
+  </div>
+
+  <div class="col-xs-12 col-md-10" ng-view autoscroll="true"></div>
+
+  </div>
+
+</div>
+
+</body>
+</html>

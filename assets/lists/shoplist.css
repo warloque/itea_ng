@@ -1,0 +1,12 @@
+.done-true {
+  text-decoration: line-through;
+  color: grey;
+}
+
+.done-false {
+  font-weight: bold;
+}
+
+.shoplist__item {
+  cursor: pointer;
+}
