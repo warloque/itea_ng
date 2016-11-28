@@ -1,0 +1,52 @@
+<h2 class="lyt-title">Множественные контроллеры</h2>
+<h3 class="lyt-subtitle">$broadcast данных в глобальный $rootScope, $on приём данных в локальном $scope</h3>
+
+<!-- using 3 independent controllers to store and exchange data -->
+
+<div class="row">
+
+    <div class="col-xs-4">
+        <!-- first controller for billing zip -->
+        <div class="panel panel-success" ng-controller="ZipFirstRSCtrl">
+            <div class="panel-heading">
+                <em>Billing Zip Code</em>
+            </div>
+            <div class="panel-body">
+                <div class="form-group">
+                    <input class="form-control" ng-model="billingZip" />
+                </div>
+                <button class="btn btn-success" ng-click="setAddress('billing', billingZip)" ng-disabled="!billingZip">
+                    Save billing
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xs-4">
+        <!-- second controller for shipment zip -->
+        <div class="panel panel-success" ng-controller="ZipSecondRSCtrl">
+            <div class="panel-heading">
+                <em>Shipping zip code</em>
+            </div>
+            <div class="panel-body">
+                <div class="form-group">
+                    <input class="form-control" ng-model="shippingZip"/>
+                </div>
+                <button class="btn btn-success" ng-click="copyAddress()" ng-disabled="!billingZip">
+                    Use Billing
+                </button>
+                <button class="btn btn-info" ng-click="setAddress('shipping', shippingZip)" ng-disabled="(!billingZip) || (!shippingZip)">
+                    Save Shipping
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- third controller for displaying billing and shipment zip -->
+    <div class="col-xs-4" ng-controller="ZipThirdRSCtrl">
+        <p><strong>Zip info:</strong></p>
+        <p>Billing Zip: <span class="text-success">{{billZip}}</span></p>
+        <p>Shipping Zip: <span class="text-success">{{shipZip}}</span></p>
+    </div>
+
+</div>

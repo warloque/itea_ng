@@ -8,6 +8,10 @@ App.config(function ($locationProvider, $routeProvider) {
     templateUrl: "views/shoplist.html"
   }).when('/calc', {
     templateUrl: "views/calculator.html"
+  }).when('/multiple', {
+    templateUrl: "views/multiplectrl.html"
+  }).when('/multiple_rootscope', {
+    templateUrl: "views/multiplectrl_rootscope.html"
   }).otherwise({
     redirectTo: '/'
   });

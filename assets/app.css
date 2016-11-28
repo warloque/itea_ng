@@ -39,6 +39,13 @@ body {
   margin-bottom: 15px;
 }
 
+.lyt-subtitle {
+  font-size: 14px;
+  font-weight: 400;
+  margin-top: -10px;
+  margin-bottom: 20px;
+}
+
 .nav__link {
   color: #fff;
 }

@@ -1,0 +1,51 @@
+<h2 class="lyt-title">Множественные контроллеры</h2>
+<h3 class="lyt-subtitle">наследование от базового контроллера</h3>
+
+<div class="row" ng-controller="ZipBasicCtrl">
+    <!-- using basic parent and only child controller,
+    all the data is stored in global controller -->
+
+    <div class="col-xs-4">
+        <!-- no controller -->
+        <div class="panel panel-success">
+            <div class="panel-heading">
+                <em>Billing Zip Code</em>
+            </div>
+            <div class="panel-body">
+                <div class="form-group">
+                    <input class="form-control" ng-model="zip.billing"/>
+                </div>
+                <button class="btn btn-success" ng-click="setAddress('billingZip', zip.billing)" ng-disabled="!zip.billing">
+                    Save billing
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xs-4">
+        <!-- only child controller -->
+        <div class="panel panel-success" ng-controller="ZipSecondCtrl">
+            <div class="panel-heading">
+                <em>Shipping zip code</em>
+            </div>
+            <div class="panel-body">
+                <div class="form-group">
+                    <input class="form-control" ng-model="zip.shipping"/>
+                </div>
+                <button class="btn btn-success" ng-click="copyAddress()" ng-disabled="!zip.billing">
+                    Use Billing
+                </button>
+                <button class="btn btn-info" ng-click="setAddress('shippingZip', zip.shipping)" ng-disabled="(!zip.billing) || (!zip.shipping)">
+                    Save Shipping
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xs-4">
+        <p><strong>Zip info:</strong></p>
+        <p>Billing Zip: <span class="text-success">{{zip.billing}}</span></p>
+        <p>Shipping Zip: <span class="text-success">{{zip.shipping}}</span></p>
+    </div>
+
+</div>
