@@ -2,52 +2,40 @@
 
 <div class="row" ng-controller="CalcCtrl">
 
-  <div class="col-md-12">
+  <div class="col-md-6">
 
-    <div class="well">
-      <!--<p ng-if="vm.digit_prev" class="text-info small">{{vm.digit_prev}}</p>-->
-      <p ng-if="vm.digit" class="text-info">{{vm.digit}}</p>
-      <p ng-if="vm.total" class="text-success">{{vm.total}}</p>
-    </div>
+    <div class="calc-body">
 
-    <div class="panel">
+      <!-- calculator display block -->
+      <div class="calc-display well">
+        <p ng-if="!(vm.pendingOperation)">{{vm.output}}</p>
+        <p ng-if="vm.pendingOperation">{{vm.runningTotal}} <strong class="text-warning">{{vm.operationToken}}</strong> {{vm.pendingValue}}</p>
+      </div>
 
-      <form class="form" action="" ng-submit="">
+      <!-- calculator numeric block -->
+      <div class="calc-digits">
+        <div class="btn btn-warning" ng-click="reset()">AC</div>
+        <div ng-repeat="i in ArrayFromNumber(10) track by $index" class="btn btn-default" ng-click="digit($index)">{{::$index}}</div>
+        <div class="btn btn-info" ng-click="calculate()">=</div>
+      </div>
 
-        <!--<input type="number" ng-model="vm.iFrom" placeholder="1" size="3" />-->
+      <!-- calculator operators block -->
+      <div class="calc-operators">
 
-        <!--<input type="number" ng-model="vm.iTo" placeholder="1" size="3" />-->
+        <div ng-controller="SquareCtrl">
+          <div class="btn btn-info" ng-click="square(vm.digit)" ng-disabled="!(vm.output)">x²</div>
 
-        <!--<div class="btn-group">
-          <div class="btn btn-default" ng-click="sum=(iFrom+iTo)">+</div>
-          <div class="btn btn-default" ng-click="sum=(iFrom-iTo)">-</div>
-          <div class="btn btn-info" ng-click="sum=(iFrom*iTo)">*</div>
-          <div class="btn btn-info" ng-click="sum=(iFrom/iTo)">/</div>
-        </div>-->
+          <div ng-controller="AddCtrl">
+            <div class="btn btn-info" ng-click="add()" ng-disabled="!(vm.output)">&plus;</div>
 
-        <div class="calc-body" ng-controller="DigitCtrl">
-          <div class="btn btn-warning" ng-click="reset()">AC</div>
-          <div ng-repeat="i in ArrayFromNumber(10) track by $index" class="btn btn-default" ng-click="digit($index)" ng-model="vm.digit_prev">{{::$index}}</div>
-        </div>
+            <div ng-controller="SubtractCtrl">
+              <div class="btn btn-info" ng-click="minus()" ng-disabled="!(vm.output)">&minus;</div>
 
-        <div class="calc-operators">
+              <div ng-controller="MultiplyCtrl">
+                <div class="btn btn-info" ng-click="mult()" ng-disabled="!(vm.output)">&times;</div>
 
-          <div ng-controller="SquareCtrl">
-            <div class="btn btn-info" ng-click="square(vm.digit)" ng-disabled="!vm.digit">x²</div>
-
-            <div ng-controller="AddCtrl">
-              <div class="btn btn-info" ng-click="add()" >+</div>
-
-              <div ng-controller="SubtractCtrl">
-                <div class="btn btn-info" ng-click="minus()" ng-disabled="(!vm.iFrom || !vm.iTo)">-</div>
-
-                <div ng-controller="MultiplyCtrl">
-                  <div class="btn btn-info" ng-click="mult()" ng-disabled="(!vm.iFrom || !vm.iTo)">*</div>
-
-                  <div ng-controller="DivideCtrl">
-                    <div class="btn btn-info" ng-click="div()" ng-disabled="(!vm.iFrom || !vm.iTo)">/</div>
-                  </div>
-
+                <div ng-controller="DivideCtrl">
+                  <div class="btn btn-info" ng-click="div()" ng-disabled="!(vm.output)">&divide;</div>
                 </div>
 
               </div>
@@ -58,10 +46,20 @@
 
         </div>
 
-      </form>
+      </div>
 
     </div>
 
   </div>
 
-</div>
+  <div class="col-md-6">
+    <p><strong>Calc data:</strong></p>
+    <p>pendingOperation: <span class="text-success">{{vm.pendingOperation}}</span>
+      <br>lastOperation: <span class="text-success">{{vm.lastOperation}}</span>
+      <br>runningTotal: <span class="text-success">{{vm.runningTotal}}</span>
+      <br>pendingValue: <span class="text-success">{{vm.pendingValue}}</span>
+      <br>newNumber: <span class="text-success">{{vm.newNumber}}</span>
+    </p>
+  </div>
+
+<link rel="stylesheet" href="/assets/calc.css"><link>
