@@ -71,11 +71,13 @@ App.controller("NotesCtrl", function ($scope) {
       active: $scope.newIsActive || false
     });
     $scope.clearInput();
+    $scope.updateLimits();
   };
 
   // remove item
   $scope.deleteNote = function (index) {
     $scope.items.splice(this.$items, 1);
+    $scope.updateLimits();
   };
 
   // clear insert new inputs
@@ -84,10 +86,23 @@ App.controller("NotesCtrl", function ($scope) {
     $scope.newText = null;
     $scope.newDate = null;
     $scope.newIsActive = false;
-    //var el = angular.element( document.querySelector( '#newNote' ) );
-    //angular.forEach(el.find('input'), function(node){
-    //node.value = null;
-    //});
   };
+
+
+    // limits
+    $scope.updateLimits = function(){
+        $scope.limitValue = $scope.limitValue || $scope.items.length;
+        $scope.limitRange = [];
+        for (var i = 1 ; i <= $scope.items.length; i++) {
+            $scope.limitRange.push(i);
+        }
+        //console.log($scope.limitRange);
+        //console.log($scope.limitValue);
+        console.log($scope.items.length);
+    }
+
+    // init
+    $scope.updateLimits();
+
 
 });
