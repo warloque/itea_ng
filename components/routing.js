@@ -14,6 +14,8 @@ App.config(function ($locationProvider, $routeProvider) {
     templateUrl: "views/multiplectrl_rootscope.html"
   }).when('/notes', {
     templateUrl: "views/notes.html"
+  }).when('/filters', {
+    templateUrl: "views/filters.html"
   }).otherwise({
     redirectTo: '/'
   });

@@ -1,0 +1,16 @@
+.filters__numberslist {
+  position: relative;
+  list-style-type: none;
+  margin: 20px 0;
+}
+
+.filters__numberslist li {
+  position: relative;
+  float: left;
+  min-width: 15px;
+  min-height: 15px;
+  text-align: center;
+  padding: 2px;
+  margin: 2px;
+  line-height: 15px;
+}
