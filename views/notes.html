@@ -68,7 +68,7 @@
             </thead>
 
             <tbody>
-            <tr ng-repeat="item in items | orderBy:sortType:sortReverse | filter:searchQuery" class="list__item done-{{item.active}}">
+            <tr ng-repeat="item in items | orderBy:sortType:sortReverse | filter:searchQuery | limitTo:limitValue" class="list__item done-{{item.active}}">
 
                 <td class="text-center">
                     <div class="material-switch">
@@ -97,6 +97,13 @@
             </tr>
             </tbody>
         </table>
+
+        <div class="panel-body">
+            <select name="limit" id="limit" class="selectpicker" ng-model="limitValue" ng-init="limitValue = ''">
+                <option value=" ">Все</option>
+                <option ng-repeat="limit in limitRange track by $index" value="{{limit}}">{{limit}}</option>
+            </select>
+        </div>
 
     </div>
 

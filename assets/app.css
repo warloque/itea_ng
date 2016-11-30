@@ -50,6 +50,10 @@ body {
   color: #fff;
 }
 
+.nav__link.is-active {
+  color: #ffeb3b;
+}
+
 body .panel {
   box-shadow: none;
 }
