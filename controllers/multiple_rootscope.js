@@ -18,9 +18,7 @@ App.controller("ZipSecondRSCtrl", function ($rootScope, $scope) {
 
     // get updated zip code from global scope
     $scope.$on('updated_zip_billing', function (event, arg) {
-        $scope.billingZip = arg;
         $scope.shippingZip = arg;
-        console.log(arg);
     });
 
     $scope.copyAddress = function () {

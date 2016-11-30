@@ -8,19 +8,18 @@
 
             <div class="row">
 
-                <div class="col-xs-12 col-md-2">
+                <div class="col-xs-12 col-md-3">
                     <input id="addfld1" class="form-control cmn-gap" type="text" ng-model="newTitle" size="20" placeholder="Название" ng-required>
                 </div>
 
-                <div class="col-xs-12 col-md-2">
+                <div class="col-xs-12 col-md-3">
                     <input id="addfld2" class="form-control cmn-gap" type="text" ng-model="newText" size="20" placeholder="Текст" ng-required>
                 </div>
 
                 <div class="col-xs-12 col-md-2">
-                    <!--<label><input id="addfld3" class="form-control cmn-gap" type="checkbox" ng-model="newIsActive"><span>Публиковать</span></label>-->
                     <div class="material-switch">
                         <input id="addfld3" name="newDate" type="checkbox" ng-model="newIsActive" />
-                        <label for="addfld3" class="label-default">Публиковать</label>
+                        <label for="addfld3" class="label-default is-textlabel">Публиковать</label>
                     </div>
                 </div>
 
@@ -39,7 +38,7 @@
         <div class="form-group">
             <div class="input-group">
                 <div class="input-group-addon">Найти по названию</div>
-                <input type="text" class="form-control" placeholder="Search item" ng-model="searchQuery">
+                <input type="text" class="form-control" placeholder="название" ng-model="searchQuery">
             </div>
         </div>
 
@@ -50,7 +49,7 @@
                 <td></td>
                 <td>
                     <a href="#" ng-click="sortType = 'title'; sortReverse = !sortReverse">
-                        Title
+                        Название
                         <span ng-show="sortType == 'title' && !sortReverse" class="fa fa-caret-down"></span>
                         <span ng-show="sortType == 'title' && sortReverse" class="fa fa-caret-up"></span>
                     </a>
@@ -58,7 +57,7 @@
                 <td></td>
                 <td>
                     <a href="#" ng-click="sortType = 'oDate'; sortReverse = !sortReverse">
-                        Date
+                        Дата
                         <span ng-show="sortType == 'oDate' && !sortReverse" class="fa fa-caret-down"></span>
                         <span ng-show="sortType == 'oDate' && sortReverse" class="fa fa-caret-up"></span>
                     </a>
@@ -71,8 +70,11 @@
             <tbody>
             <tr ng-repeat="item in items | orderBy:sortType:sortReverse | filter:searchQuery" class="list__item done-{{item.active}}">
 
-                <td>
-                    <input class="checkbox-inline" type="checkbox" ng-model="item.active"/>
+                <td class="text-center">
+                    <div class="material-switch">
+                        <input name="isActive{{$index}}" id="isActive{{$index}}" type="checkbox" ng-model="item.active"/>
+                        <label for="isActive{{$index}}" class="label-info"></label>
+                    </div>
                 </td>
 
                 <td>
@@ -80,15 +82,15 @@
                 </td>
 
                 <td>
-                    <!--<span>{{item.text | cut:true:2:' ...'}}</span>-->
-                    <span>{{item.text | limitTo: 15 }}{{item.text.length > 15 ? '...' : ''}}</span>
+                    <span>{{item.text | cut:true:15:' ...'}}</span>
+                    <!--<span>{{item.text | limitTo: 15 }}{{item.text.length > 15 ? '...' : ''}}</span>-->
                 </td>
 
                 <td>
                     <span>{{::item.oDate | date:'dd MMM yyyy'}}</span>
                 </td>
 
-                <td>
+                <td class="text-center">
                     <input type="button" class="btn btn-sm btn-danger" value="Удалить" ng-click="deleteNote($index)">
                 </td>
 

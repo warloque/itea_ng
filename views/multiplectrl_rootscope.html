@@ -32,10 +32,7 @@
                 <div class="form-group">
                     <input class="form-control" ng-model="shippingZip"/>
                 </div>
-                <button class="btn btn-success" ng-click="copyAddress()" ng-disabled="!billingZip">
-                    Use Billing
-                </button>
-                <button class="btn btn-info" ng-click="setAddress('shipping', shippingZip)" ng-disabled="(!billingZip) || (!shippingZip)">
+                <button class="btn btn-info" ng-click="setAddress('shipping', shippingZip)">
                     Save Shipping
                 </button>
             </div>

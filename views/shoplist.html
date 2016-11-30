@@ -1,4 +1,4 @@
-<link href="./assets/lists/shoplist.css" rel="stylesheet"/>
+<link href="./assets/shoplist.css" rel="stylesheet"/>
 
 <div class="row">
 
@@ -37,9 +37,12 @@
 
             <table class="table table-hover">
                 <tbody>
-                <tr ng-repeat="item in items track by $index" class="shoplist__item done-{{item.done}}" ng-click="item.done=!item.done">
+                <tr ng-repeat="item in items track by $index" class="shoplist__item done-{{item.done}}">
                     <td>
-                        <input class="checkbox-inline" type="checkbox" ng-model="item.done">
+                        <div class="material-switch">
+                            <input name="isDone{{$index}}" id="isDone{{$index}}" type="checkbox" ng-model="item.done"/>
+                            <label for="isDone{{$index}}" class="label-info"></label>
+                        </div>
                     </td>
                     <td>
                         <span>{{::item.text}}</span>
